@@ -1,0 +1,16 @@
+version: '3.8' # Docker Compose version
+services:
+  postgres:
+    image: postgres:15 # Use the desired PostgreSQL version
+    container_name: my_postgres # Custom container name
+    ports:
+      - "5433:5432" # Map the container port to your host machine
+    environment:
+      POSTGRES_USER: admin # Set the PostgreSQL username
+      POSTGRES_PASSWORD: root123456 # Set the PostgreSQL password
+      POSTGRES_DB: mydatabase # Set the default database name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data in a Docker volume
+volumes:
+  postgres_data:
+    driver: local # Default local volume
